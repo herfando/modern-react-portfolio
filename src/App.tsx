@@ -1,11 +1,9 @@
 import Hero from "./components/container/HeroSection";
-
+import Navbar from "./components/container/Navbar";
 function App() {
   return (
     <>
-      <h1 className="text-3xl">code here halo</h1>
-      {/* example */}
-      <Hero />
+      <Navbar />
     </>
   );
 }
