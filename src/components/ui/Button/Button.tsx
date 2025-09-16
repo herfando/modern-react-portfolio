@@ -1,7 +1,7 @@
 // src/components/ui/Button/index.tsx
 import React from "react";
 
-// Tentukan tipe untuk props. Tambahkan 'label'.
+// Type data untuk properti Button
 interface ButtonProps {
   label: string; // Tambahkan ini
   className?: string; // Properti untuk kelas CSS (opsional)
