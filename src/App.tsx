@@ -2,6 +2,7 @@ import Achievement from "./components/container/Achievement";
 import Brands from "./components/container/Brands";
 import Flow_process from "./components/container/Flow_process/Flow_process";
 import Hero from "./components/container/Hero";
+import Industry from "./components/container/Industry";
 import Navbar from "./components/container/Navbar";
 import Services from "./components/container/Services";
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Achievement />
       <Flow_process />
       <Services />
+      <Industry />
     </>
   );
 }
