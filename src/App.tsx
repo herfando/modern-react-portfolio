@@ -10,6 +10,7 @@ import Services from "./components/container/Services";
 import Testimonials from "./components/container/Testimonials";
 import Ask_me from "./components/container/Ask_me";
 import Contact from "./components/container/Contact";
+import Footer from "./components/container/Footer";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
       <Testimonials />
       <Ask_me />
       <Contact />
+      <Footer />
     </>
   );
 }
