@@ -3,6 +3,7 @@ import Brands from "./components/container/Brands";
 import Flow_process from "./components/container/Flow_process/Flow_process";
 import Hero from "./components/container/Hero";
 import Navbar from "./components/container/Navbar";
+import Services from "./components/container/Services";
 function App() {
   return (
     <>
@@ -11,6 +12,7 @@ function App() {
       <Brands />
       <Achievement />
       <Flow_process />
+      <Services />
     </>
   );
 }
