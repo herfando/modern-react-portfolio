@@ -2,34 +2,47 @@
 import { useEffect, useState } from "react";
 
 export default function DarkModeToggle() {
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState(false);
 
+  // Saat pertama kali load, cek setting user
   useEffect(() => {
-    // cek localStorage atau preferensi OS
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      setIsDark(storedTheme === "dark");
+    const root = document.documentElement;
+
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      root.classList.add("dark");
+      setDarkMode(true);
     } else {
-      setIsDark(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      root.classList.remove("dark");
+      setDarkMode(false);
     }
   }, []);
 
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+  // Fungsi toggle dark mode
+  const toggleDarkMode = () => {
+    const root = document.documentElement;
+
+    if (darkMode) {
+      root.classList.remove("dark");
+      localStorage.theme = "light";
     } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      root.classList.add("dark");
+      localStorage.theme = "dark";
     }
-  }, [isDark]);
+
+    setDarkMode(!darkMode);
+  };
 
   return (
     <button
-      onClick={() => setIsDark(!isDark)}
-      className="p-2 rounded-full border border-gray-300 dark:border-gray-600"
+      onClick={toggleDarkMode}
+      className="p-2 rounded-full bg-gray-200 dark:bg-gray-900 text-xl"
+      title="Toggle Dark Mode"
     >
-      {isDark ? "🌙" : "☀️"}
+      {darkMode ? "🌙" : "☀️"}
     </button>
   );
 }

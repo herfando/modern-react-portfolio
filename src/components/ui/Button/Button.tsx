@@ -9,7 +9,7 @@ interface ButtonProps {
 
 const Button = ({ children, className, label }: React.PropsWithChildren<ButtonProps>) => {
   return (
-    <button className={`bg-[#FF623E] w-[197px] h-[44px] rounded-2xl font-bold text-white ${className}`}>
+    <button className={`bg-[#FF623E] w-[197px] h-[44px] rounded-3xl font-bold text-white ${className}`}>
       {children} {label}
     </button>
   );
