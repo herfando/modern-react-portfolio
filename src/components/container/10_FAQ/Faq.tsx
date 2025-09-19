@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const faqs = [
+const Faqs = [
   {
     question: "What services do you offer?",
     answer:
@@ -27,16 +27,16 @@ const faqs = [
   },
 ];
 
-const Ask_me = () => {
+const Faq = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleFAQ = (index) => {
+  const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
     <section
-      id="FAQ"
+      id="Faq"
       className="max-[393px]:py-10 max-[393px]:px-3.5 flex flex-col gap-12 py-20 px-[120px] bg-white dark:bg-black text-black dark:text-white w-full"
     >
       {/* Header */}
@@ -54,16 +54,16 @@ const Ask_me = () => {
 
       {/* Kontainer utama */}
       <div className="flex gap-[73px] max-[393px]:flex-col max-[393px]:gap-8">
-        {/* Kiri: FAQ */}
+        {/* Kiri: Faq */}
         <div className="flex flex-col gap-7 grow">
-          {faqs.map((faq, index) => (
+          {Faqs.map((Faq, index) => (
             <div key={index} className="flex flex-col gap-4">
               {/* Question */}
               <div
                 className="flex justify-between cursor-pointer"
-                onClick={() => toggleFAQ(index)}
+                onClick={() => toggleFaq(index)}
               >
-                <h3 className="leading-9 text-2xl font-bold">{faq.question}</h3>
+                <h3 className="leading-9 text-2xl font-bold">{Faq.question}</h3>
                 <div className="basis-[24px]">
                   {openIndex === index ? (
                     <span className="text-2xl font-bold">−</span>
@@ -76,7 +76,7 @@ const Ask_me = () => {
               {/* Answer */}
               {openIndex === index && (
                 <p className="leading-[34px] text-xl font-medium text-[#717680]">
-                  {faq.answer}
+                  {Faq.answer}
                 </p>
               )}
               <div className="h-[1px] bg-[#dfdfdf]"></div>
@@ -109,4 +109,4 @@ const Ask_me = () => {
   );
 };
 
-export default Ask_me;
+export default Faq;

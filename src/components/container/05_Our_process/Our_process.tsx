@@ -1,6 +1,6 @@
 import React from "react";
 
-const Flow_process = () => {
+const Our_process = () => {
     return (
     <section className="flex flex-col gap-16 py-20 max-[393px]:py-10 px-[140px] max-[393px]:px-3.5 bg-white dark:bg-black w-full">
       <div className="flex flex-col gap-[11px] text-center">
@@ -89,4 +89,4 @@ const Flow_process = () => {
     </section>
     )
 }
-export default Flow_process;
+export default Our_process;
