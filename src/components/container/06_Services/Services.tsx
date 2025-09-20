@@ -1,7 +1,7 @@
 import React from "react";
 const Services = () => {
     return (
-        <section className="flex flex-col gap-16  py-20 px-[140px] max-[393px]:py-10  max-[393px]:px-3.5  dark:bg-black text-black dark:text-white w-full">
+        <section id="Services" className="flex flex-col gap-16  py-20 px-[140px] max-[393px]:py-10  max-[393px]:px-3.5  dark:bg-black text-black dark:text-white w-full">
       <div className="flex flex-col gap-[11px] text-center">
         <h2 className="leading-14 text-[40px] font-bold max-[393px]:text-3xl max-[393px]:w-full">
           Smart IT Solutions That Grow With You

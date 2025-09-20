@@ -36,7 +36,7 @@ const Faq = () => {
 
   return (
     <section
-      id="Faq"
+      id="FAQ"
       className="max-[393px]:py-10 max-[393px]:px-3.5 flex flex-col gap-12 py-20 px-[120px] bg-white dark:bg-black text-black dark:text-white w-full"
     >
       {/* Header */}
