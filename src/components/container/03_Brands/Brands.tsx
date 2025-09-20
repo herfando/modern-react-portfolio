@@ -25,7 +25,7 @@ const Brands: React.FC = () => {
     <ul
         className="flex animate-scroll-left space-x-10 grayscale w-full"
     >
-        {/* Gunakan map untuk merender setiap item dari array */}
+        {/* map untuk merender setiap item dari array */}
         {BRAND_LOGOS.map((brand, index) => (
         <li key={index} className="flex-shrink-0">
             <img 

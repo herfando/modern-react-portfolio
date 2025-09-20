@@ -9,7 +9,6 @@ const HERO_CONTENT = {
   buttonTarget: "Form",
 };
 
-// Gunakan React.FC secara lengkap
 const Hero: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const sectionElement = document.getElementById(sectionId);
