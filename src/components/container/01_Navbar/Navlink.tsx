@@ -1,6 +1,6 @@
 import React from "react";
 
-// Menambahkan prop 'isActive'
+
 type NavLinkProps = {
   id: string;
   label: string;

@@ -1,58 +1,80 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const Testimonials = () => {
-  // 1. Definisikan state untuk melacak slide yang aktif.
+const Testimonials: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const testimonialCardsRef = useRef<Array<HTMLDivElement | null>>([]);
 
-  // 2. Gunakan useRef untuk mendapatkan referensi ke elemen DOM.
-  const sliderRef = useRef(null);
-  const testimonialCardsRef = useRef([]);
+  const testimonials = [
+    {
+      name: "John Lee",
+      title: "Creative Director at Innovate Corp",
+      quote: "Working with this team was a game-changer for our project. They understood our vision and turned it into reality efficiently and effectively.",
+      image: "./johnlee.png",
+      index: 0
+    },
+    {
+      name: "Sarah Tan",
+      title: "Product Manager at Finovate",
+      quote: "The team delivered exactly what we needed — on time and with outstanding quality. Their attention to detail and communication were top-notch.",
+      image: "./sarahtan.png",
+      index: 1
+    },
+    {
+      name: "Emily Chen",
+      title: "Marketing Head at Tech Solutions",
+      quote: "The collaboration was seamless, and the results surpassed our expectations. Their expertise transformed our ideas into a successful product.",
+      image: "./emilychen.png",
+      index: 2
+    }
+  ];
 
-  // 3. Gunakan useEffect untuk menjalankan efek samping,
-  //    seperti saat komponen di-mount atau state berubah.
   useEffect(() => {
-    // Fungsi untuk memperbarui slider.
-    const updateSlider = () => {
+    const updateSliderPosition = () => {
       if (!sliderRef.current || testimonialCardsRef.current.length === 0) {
         return;
       }
 
-      const isMobile = window.innerWidth <= 393;
-      const slider = sliderRef.current;
+      const container = sliderRef.current.parentElement as HTMLElement;
+      if (!container) return;
 
-      if (isMobile) {
-        const cardWidth = testimonialCardsRef.current[0].offsetWidth + 16;
-        const containerWidth = slider.parentElement.offsetWidth;
-        const offset = currentSlide * cardWidth - (containerWidth - cardWidth) / 2;
-        slider.style.transform = `translateX(-${offset}px)`;
+      const card = testimonialCardsRef.current[currentSlide];
+      if (!card) return;
+
+      const currentCardWidth = card.offsetWidth;
+      const containerWidth = container.offsetWidth;
+
+      let scrollOffset = 0;
+
+      if (window.innerWidth <= 393) {
+        scrollOffset = card.offsetLeft - (containerWidth / 2) + (currentCardWidth / 2);
       } else {
-        const cardWidth = 594 + 925; // Lebar card + gap pada desktop
-        slider.style.transform = `translateX(-${currentSlide * cardWidth - 465}px)`;
+        scrollOffset = card.offsetLeft - (containerWidth / 2) + (currentCardWidth / 2);
       }
+      
+      const maxScroll = sliderRef.current.scrollWidth - containerWidth;
+      scrollOffset = Math.max(0, Math.min(scrollOffset, maxScroll));
+
+      sliderRef.current.style.transform = `translateX(-${scrollOffset}px)`;
     };
 
-    // Jalankan fungsi updateSlider saat komponen pertama kali di-render
-    // dan saat currentSlide berubah.
-    updateSlider();
+    updateSliderPosition();
+    window.addEventListener("resize", updateSliderPosition);
 
-    // Tambahkan event listener untuk resize window.
-    window.addEventListener("resize", updateSlider);
-    
-    // Cleanup function: hapus event listener saat komponen unmount.
     return () => {
-      window.removeEventListener("resize", updateSlider);
+      window.removeEventListener("resize", updateSliderPosition);
     };
-  }, [currentSlide]); // Dependency array: efek akan dijalankan kembali jika currentSlide berubah.
+  }, [currentSlide]);
 
-  // 4. Fungsi untuk menangani klik tombol navigasi.
-  const goToSlide = (index) => {
+  const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
 
+  const isActive = (index: number) => index === currentSlide;
+
   return (
-    <section id="Testimonials" className="max-[393px]:py-10 max-[393px]:px-3.5 flex flex-col gap-20 py-20 bg-white dark:bg-black text-black dark:text-white w-full">
-      {/* Judul */}
-      <div className="flex flex-col gap-[11px] text-center">
+    <section id="Testimonials" className="gap-4 bg-white dark:bg-black justify-center flex flex-col md:h-[723px] h-[700px] text-black dark:text-white w-full">
+      <div className="gap-4 flex flex-col text-center">
         <h2 className="leading-14 text-[40px] font-bold max-[393px]:text-[30px] max-[393px]:font-medium">
           What Partners Say About Working With Us
         </h2>
@@ -61,121 +83,64 @@ const Testimonials = () => {
         </p>
       </div>
 
-      {/* Card Container */}
-      <div className="relative overflow-hidden max-[393px]:h-[483px] max-[393px]:pt-0 pt-[25px]">
-        {/* Slider Wrapper */}
-        <div ref={sliderRef} id="testimonialSlider" className="flex flex-nowrap gap-[925px] max-[393px]:gap-4 max-[393px]:pb-[60px] max-[393px]:w-max transition-transform duration-500 ease-in-out pl-[465px] max-[393px]:pl-0">
-          {/* Card 1 */}
-          <div ref={(el) => (testimonialCardsRef.current[0] = el)} className="testimonial-card w-[594px] max-[393px]:w-[361px] max-[393px]:h-[284px] flex-shrink-0 h-[292px] p-[1px] bg-gradient-to-br from-[#ff6c37] to-[#dedcdc] rounded-[18px] relative" data-index="0">
-            <div className="h-full bg-[#fafafa] dark:bg-[#0A0D12] rounded-2xl relative">
-              <div className="flex flex-col gap-6 pt-6 px-6 ">
-                <div className="flex flex-col gap-3 items-center">
-                  <div className="flex gap-1">
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                  </div>
-                  <p className="leading-8 text-lg font-semibold text-center">
-                    “Working with this team was a game-changer for our project. They understood our vision and turned it into reality efficiently and effectively.”
-                  </p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <h3 className="leading-8 text-lg font-semibold">John Lee</h3>
-                  <p className="leading-8 text-lg font-semibold text-[#ff623e]">Creative Director at Innovate Corp</p>
-                </div>
-                <div className="basis-[75px]">
-                  <img className="mx-auto" src="./johnlee.png" alt="John Lee" />
-                </div>
-              </div>
-              <div className="relative top-[-360px] left-10 w-[46px] max-[393px]:top-[-395px]">
-                <img src="./Vector.png" alt="Quote Icon" />
-              </div>
-            </div>
-          </div>
+      <div className=" relative overflow-hidden py-[25px] max-[393px]:h-[483px] max-[393px]:pt-0">
+        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none max-[393px]:hidden"></div>
+        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none max-[393px]:hidden"></div>
 
-          {/* Card 2 */}
-          <div ref={(el) => (testimonialCardsRef.current[1] = el)} className="testimonial-card w-[594px] max-[393px]:w-[361px] max-[393px]:h-[284px] flex-shrink-0 h-[292px] p-[1px] bg-gradient-to-br from-[#ff6c37] to-[#dedcdc] rounded-[18px] relative" data-index="1">
-            <div className="h-full bg-[#fafafa] dark:bg-[#0A0D12] rounded-2xl relative">
-              <div className="flex flex-col gap-6 pt-6 px-6">
-                <div className="flex flex-col gap-3 items-center">
+        <div ref={sliderRef} id="testimonialSlider" 
+            className="flex flex-nowrap gap-4 transition-transform duration-500 ease-in-out px-4">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              ref={(el) => {
+                if (el) {
+                  testimonialCardsRef.current[index] = el;
+                }
+              }}
+              className={`
+                testimonial-card flex-shrink-0 
+                w-[594px] h-[292px] max-[393px]:w-[361px] max-[393px]:h-[284px] 
+                p-[1px] rounded-[18px] relative mt-5
+                ${isActive(index) ? 'bg-gradient-to-br from-[#ff6c37] to-[#dedcdc]' : 'bg-transparent'}
+                ${isActive(index) ? 'opacity-100 scale-100' : 'opacity-60 scale-95'}
+                transition-all duration-500 ease-in-out
+              `}
+            >
+              <div className="h-full bg-[#fafafa] dark:bg-[#0A0D12] rounded-2xl relative flex flex-col gap-6">
+                <div className="absolute top-[-20px] left-6 w-[46px]">
+                  <img src="./Vector.png" alt="Quote Icon" className="w-full h-auto" />
+                </div>
+                
+                <div className="flex flex-col gap-6 items-center text-center mt-4">
                   <div className="flex gap-1">
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
+                    {[...Array(5)].map((_, i) => (
+                      <img key={i} src="./line-md_star-filled.png" alt="Star" />
+                    ))}
                   </div>
-                  <p className="leading-8 text-lg font-semibold text-center">
-                    “The team delivered exactly what we needed — on time and with outstanding quality. Their attention to detail and communication were top-notch.”
+                  <p className="px-2 leading-8 md:text-lg text-sm font-semibold">
+                    “{testimonial.quote}”
                   </p>
                 </div>
-                <div className="flex flex-col items-center">
-                  <h3 className="leading-8 text-lg font-semibold">Sarah Tan</h3>
-                  <p className="leading-8 text-lg font-semibold text-[#ff623e]">Product Manager at Finovate</p>
+                
+                <div className="flex flex-col items-center justify-center mt-auto">
+                    <h3 className="leading-8 text-lg font-semibold">{testimonial.name}</h3>
+                    <p className="leading-8 text-lg font-semibold text-[#ff623e]">{testimonial.title}</p>
+                    <img className="mx-auto w-[75px] h-[75px] rounded-full object-cover" src={testimonial.image} alt={testimonial.name} />
                 </div>
-                <div className="basis-[75px]">
-                  <img className="mx-auto" src="./sarahtan.png" alt="Sarah Tan" />
-                </div>
-              </div>
-              <div className="relative top-[-360px] left-10 w-[46px] max-[393px]:top-[-425px]">
-                <img src="./Vector.png" alt="Quote Icon" />
               </div>
             </div>
-          </div>
-
-          {/* Card 3 */}
-          <div ref={(el) => (testimonialCardsRef.current[2] = el)} className="testimonial-card w-[594px] max-[393px]:w-[361px] max-[393px]:h-[284px] flex-shrink-0 h-[292px] p-[1px] bg-gradient-to-br from-[#ff6c37] to-[#dedcdc] rounded-[18px] relative" data-index="2">
-            <div className="h-full bg-[#fafafa] dark:bg-[#0A0D12] rounded-2xl relative">
-              <div className="flex flex-col gap-6 pt-6 px-6">
-                <div className="flex flex-col gap-3 items-center">
-                  <div className="flex gap-1">
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                    <img src="./line-md_star-filled.png" alt="Star" />
-                  </div>
-                  <p className="leading-8 text-lg font-semibold text-center">
-                    “The collaboration was seamless, and the results surpassed our expectations. Their expertise transformed our ideas into a successful product.”
-                  </p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <h3 className="leading-8 text-lg font-semibold">Emily Chen</h3>
-                  <p className="leading-8 text-lg font-semibold text-[#ff623e]">Marketing Head at Tech Solutions</p>
-                </div>
-                <div className="basis-[75px]">
-                  <img className="mx-auto" src="./emilychen.png" alt="Emily Chen" />
-                </div>
-              </div>
-              <div className="relative top-[-360px] left-10 w-[46px] max-[393px]:top-[-425px]">
-                <img src="./Vector.png" alt="Quote Icon" />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Dot Navigasi */}
-        <ul className="mt-16 flex justify-center gap-2 max-[393px]:mt-20">
-          <li>
-            <button
-              className={`dot w-3 h-3 rounded-full ${currentSlide === 0 ? "bg-[#ff6c37]" : "bg-[#e5e5e5]"}`}
-              onClick={() => goToSlide(0)}
-            ></button>
-          </li>
-          <li>
-            <button
-              className={`dot w-3 h-3 rounded-full ${currentSlide === 1 ? "bg-[#ff6c37]" : "bg-[#e5e5e5]"}`}
-              onClick={() => goToSlide(1)}
-            ></button>
-          </li>
-          <li>
-            <button
-              className={`dot w-3 h-3 rounded-full ${currentSlide === 2 ? "bg-[#ff6c37]" : "bg-[#e5e5e5]"}`}
-              onClick={() => goToSlide(2)}
-            ></button>
-          </li>
+        <ul className=" mt-25 flex justify-center gap-2">
+          {testimonials.map((_, index) => (
+            <li key={index}>
+              <button
+                className={`dot w-3 h-3 rounded-full ${isActive(index) ? "bg-[#ff6c37]" : "bg-[#e5e5e5]"}`}
+                onClick={() => goToSlide(index)}
+              ></button>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

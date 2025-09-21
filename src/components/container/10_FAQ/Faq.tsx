@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import FaqItem from "../../ui/FaqItem/FaqItem";
 
-const Faqs = [
+const Faqs: React.FC = [
   {
     question: "What services do you offer?",
     answer:
@@ -56,31 +57,14 @@ const Faq = () => {
       <div className="flex gap-[73px] max-[393px]:flex-col max-[393px]:gap-8">
         {/* Kiri: Faq */}
         <div className="flex flex-col gap-7 grow">
-          {Faqs.map((Faq, index) => (
-            <div key={index} className="flex flex-col gap-4">
-              {/* Question */}
-              <div
-                className="flex justify-between cursor-pointer"
-                onClick={() => toggleFaq(index)}
-              >
-                <h3 className="leading-9 text-2xl font-bold">{Faq.question}</h3>
-                <div className="basis-[24px]">
-                  {openIndex === index ? (
-                    <span className="text-2xl font-bold">−</span>
-                  ) : (
-                    <span className="text-2xl font-bold">+</span>
-                  )}
-                </div>
-              </div>
-
-              {/* Answer */}
-              {openIndex === index && (
-                <p className="leading-[34px] text-xl font-medium text-[#717680]">
-                  {Faq.answer}
-                </p>
-              )}
-              <div className="h-[1px] bg-[#dfdfdf]"></div>
-            </div>
+          {Faqs.map((faq, index) => (
+            <FaqItem
+              key={index}
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={openIndex === index}
+              onClick={() => toggleFaq(index)}
+            />
           ))}
         </div>
 
