@@ -16,28 +16,28 @@ const initialFormData: FormData = {
 };
 
 const useContact = () => {
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+    const [formData, setFormData] = useState<FormData>(initialFormData);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value, type, checked } = e.target as HTMLInputElement;
 
     if (type === "checkbox") {
-      setFormData((prevData) => ({
+        setFormData((prevData) => ({
         ...prevData,
         services: checked
-          ? [...prevData.services, value]
-          : prevData.services.filter((service) => service !== value),
-      }));
+            ? [...prevData.services, value]
+            : prevData.services.filter((service) => service !== value),
+        }));
     } else {
-      setFormData((prevData) => ({ ...prevData, [id]: value }));
+        setFormData((prevData) => ({ ...prevData, [id]: value }));
     }
-  };
-  
-  const resetForm = () => {
-    setFormData(initialFormData);
-  };
+};
 
-  return { formData, handleInputChange, resetForm };
+const resetForm = () => {
+    setFormData(initialFormData);
+};
+
+    return { formData, handleInputChange, resetForm };
 };
 
 export default useContact;
