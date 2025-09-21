@@ -10,21 +10,21 @@ const Testimonials: React.FC = () => {
       name: "John Lee",
       title: "Creative Director at Innovate Corp",
       quote: "Working with this team was a game-changer for our project. They understood our vision and turned it into reality efficiently and effectively.",
-      image: "./johnlee.png",
+      image: "./09_Testimonials_johnlee.png",
       index: 0
     },
     {
       name: "Sarah Tan",
       title: "Product Manager at Finovate",
       quote: "The team delivered exactly what we needed — on time and with outstanding quality. Their attention to detail and communication were top-notch.",
-      image: "./sarahtan.png",
+      image: "./09_Testimonials_sarahtan.png",
       index: 1
     },
     {
       name: "Emily Chen",
       title: "Marketing Head at Tech Solutions",
       quote: "The collaboration was seamless, and the results surpassed our expectations. Their expertise transformed our ideas into a successful product.",
-      image: "./emilychen.png",
+      image: "./09_Testimonials_emilychen.png",
       index: 2
     }
   ];
@@ -108,13 +108,13 @@ const Testimonials: React.FC = () => {
             >
               <div className="h-full bg-[#fafafa] dark:bg-[#0A0D12] rounded-2xl relative flex flex-col gap-6">
                 <div className="absolute top-[-20px] left-6 w-[46px]">
-                  <img src="./Vector.png" alt="Quote Icon" className="w-full h-auto" />
+                  <img src="./09_Testimonials_vector.png" alt="Quote Icon" className="w-full h-auto" />
                 </div>
                 
                 <div className="flex flex-col gap-6 items-center text-center mt-4">
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <img key={i} src="./line-md_star-filled.png" alt="Star" />
+                      <img key={i} src="./09_Testimonials_star.png" alt="Star" />
                     ))}
                   </div>
                   <p className="px-2 leading-8 md:text-lg text-sm font-semibold">

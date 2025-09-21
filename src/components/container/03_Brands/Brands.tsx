@@ -2,15 +2,15 @@ import React from "react";
 
 // Pisahkan data merek ke dalam array
 const BRAND_LOGOS = [
-    { src: "./adobe.png", alt: "Adobe" },
-    { src: "./upwork.png", alt: "Upwork" },
-    { src: "./zoom.png", alt: "Zoom" },
-    { src: "./postman.png", alt: "Postman" },
-    { src: "./databricks.png", alt: "Databricks" },
-    { src: "./airbnb.png", alt: "Airbnb" },
-    { src: "./dropbox.png", alt: "Dropbox" },
-    { src: "./paypal.png", alt: "PayPal" },
-    { src: "./netflix.png", alt: "Netflix" },
+    { src: "./03_Brands_adobe.png", alt: "Adobe" },
+    { src: "./03_Brands_upwork.png", alt: "Upwork" },
+    { src: "./03_Brands_zoom.png", alt: "Zoom" },
+    { src: "./03_Brands_postman.png", alt: "Postman" },
+    { src: "./03_Brands_databricks.png", alt: "Databricks" },
+    { src: "./03_Brands_airbnb.png", alt: "Airbnb" },
+    { src: "./03_Brands_dropbox.png", alt: "Dropbox" },
+    { src: "./03_Brands_paypal.png", alt: "PayPal" },
+    { src: "./03_Brands_netflix.png", alt: "Netflix" },
 ];
 
 const Brands: React.FC = () => {

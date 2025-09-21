@@ -2,17 +2,17 @@ import React from "react";
 
 const PORTFOLIOS = [
   {
-    imageSrc: "./portfolio1.png",
+    imageSrc: "./08_Portfolio_1.png",
     category: "Landing Page",
     title: "Portofolio 1",
   },
   {
-    imageSrc: "./portfolio2.png",
+    imageSrc: "./08_Portfolio_2.png",
     category: "Landing Page",
     title: "Portofolio 2",
   },
   {
-    imageSrc: "./portfolio3.png",
+    imageSrc: "./08_Portfolio_3.png",
     category: "Landing Page",
     title: "Portofolio 3",
   },

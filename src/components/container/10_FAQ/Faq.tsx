@@ -79,7 +79,7 @@ const Faq: React.FC = () => {
               Book a free consultation with our team.
             </p>
           </div>
-          <img src="./Consultation Image.png" alt="Consultation" />
+          <img src="./10_FAQ_consultation.png" alt="Consultation" />
           <button
             onClick={() =>
               document.getElementById("Form")?.scrollIntoView({ behavior: "smooth" })

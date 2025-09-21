@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
           </h2>
           {/* LOGO */}
           <div className="flex h-[29.59px] w-[150px] md:pr-7 pr-0 pl-7 md:pl-0 scale-150 font-bold md:justify-end justify-start order-1 md:order-2">
-            <img className="w-109px pr-3" src="./logo-symbol.png" alt="Your Logo" />
+            <img className="w-109px pr-3" src="./12_Footer_logo.png" alt="Your Logo" />
             Your Logo
           </div>
         </div>
@@ -62,10 +62,10 @@ const Footer: React.FC = () => {
           </ul>
           {/* IKON SOSIAL MEDIA */}
           <ul className="flex gap-4 max-[393px]:self-start max-[393px]:pt-2">
-            <SocialIcon href="#" src="./fb.png" alt="Facebook" />
-            <SocialIcon href="#" src="./ig.png" alt="Instagram" />
-            <SocialIcon href="#" src="./linkeid.png" alt="LinkedIn" />
-            <SocialIcon href="#" src="./tiktok.png" alt="TikTok" />
+            <SocialIcon href="#" src="./12_Footer_fb.png" alt="Facebook" />
+            <SocialIcon href="#" src="./12_Footer_ig.png" alt="Instagram" />
+            <SocialIcon href="#" src="./12_Footer_linkeid.png" alt="LinkedIn" />
+            <SocialIcon href="#" src="./12_Footer_tiktok.png" alt="TikTok" />
           </ul>
         </div>
       </div>

@@ -9,7 +9,7 @@ interface PopupUIProps {
 const PopupUI: React.FC<PopupUIProps> = ({ type, onClose }) => {
   const isSuccess = type === 'success';
 
-  const imageSrc = isSuccess ? "./Message received.png" : "./Message not received.png";
+  const imageSrc = isSuccess ? "./UI_Popup_message_received.png" : "./UI_Popup_message_not_received.png";
   const imageAlt = isSuccess ? "message received" : "message not received";
   const title = isSuccess ? "Message Received!" : "Oops! Something went wrong.";
   const message = isSuccess

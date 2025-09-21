@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
     <header className="bg-white dark:bg-black text-black dark:text-white md:px-25 px-1 w-full h-21 flex justify-between items-center fixed top-0 left-0 z-50">
       {/* Logo */}
       <a href="#" onClick={() => scrollToSection('Hero')} className="flex items-center gap-2 translate-x-4 md:translate-0">
-        <img className="md:scale-100 scale-80" src="./1.mylogo.png" alt="logo" />
+        <img className="md:scale-100 scale-80" src="./01_Navbar_mylogo.png" alt="logo" />
         <span className="md:text-2xl text-l font-bold">Your Logo</span>
       </a>
 
