@@ -1,3 +1,3 @@
-import ContactUI from "./ContactUi";
+import ContactUI from "./ContactUI";
 
 export default ContactUI;
