@@ -44,12 +44,12 @@ const Hero: React.FC = () => {
       <div className="md:col-start-2 flex justify-center items-center">
         <img
           className="dark:hidden block w-full h-auto object-contain max-h-[663px] max-w-[747px]"
-          src="./public/2.Image Hero light.png"
+          src="./2.Image Hero light.png"
           alt="Smartphone in light mode"
         />
         <img
           className="hidden dark:block w-full h-auto object-contain max-h-[663px] max-w-[747px]"
-          src="./public/3.Image Hero dark.png"
+          src="./3.Image Hero dark.png"
           alt="Smartphone in dark mode"
         />
       </div>

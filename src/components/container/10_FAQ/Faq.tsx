@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import FaqItem from "../../ui/FaqItem/FaqItem";
 
-const Faqs: React.FC = [
+// Data FAQ dipisahkan agar tidak dibuat ulang setiap render
+const faqData = [
   {
     question: "What services do you offer?",
     answer:
@@ -28,10 +29,10 @@ const Faqs: React.FC = [
   },
 ];
 
-const Faq = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+const Faq: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFaq = (index) => {
+  const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -54,10 +55,10 @@ const Faq = () => {
       <div className="h-[1px] bg-[#dfdfdf]"></div>
 
       {/* Kontainer utama */}
-      <div className="flex gap-[73px] max-[393px]:flex-col max-[393px]:gap-8">
+      <div className="flex gap-[73px] flex-col md:flex-row max-[393px]:gap-8">
         {/* Kiri: Faq */}
         <div className="flex flex-col gap-7 grow">
-          {Faqs.map((faq, index) => (
+          {faqData.map((faq, index) => (
             <FaqItem
               key={index}
               question={faq.question}
@@ -74,9 +75,9 @@ const Faq = () => {
             <h3 className="leading-11 text-4xl font-bold">
               Let’s talk it through
             </h3>
-            <button className="active:bg-blue-400 leading-8 text-lg font-semibold">
-              book a free consultation with our team.
-            </button>
+            <p className="leading-8 text-lg font-semibold">
+              Book a free consultation with our team.
+            </p>
           </div>
           <img src="./Consultation Image.png" alt="Consultation" />
           <button

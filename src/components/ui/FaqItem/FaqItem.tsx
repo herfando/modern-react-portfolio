@@ -1,30 +1,23 @@
-// src/ui/FaqItem/FaqItem.tsx
-import React from 'react';
+import React from "react";
 
-const FaqItem: React.FC = ({ question, answer, isOpen, onClick }) => {
+interface FaqItemProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onClick: () => void;
+}
+
+const FaqItem: React.FC<FaqItemProps> = ({ question, answer, isOpen, onClick }) => {
   return (
-    <div className="flex flex-col gap-4">
-      {/* Question */}
-      <div
-        className="flex justify-between cursor-pointer"
+    <div className="border-b border-gray-300 pb-4">
+      <button
         onClick={onClick}
+        className="flex justify-between items-center w-full text-left"
       >
-        <h3 className="leading-9 text-2xl font-bold">{question}</h3>
-        <div className="basis-[24px]">
-          {isOpen ? (
-            <span className="text-2xl font-bold">−</span>
-          ) : (
-            <span className="text-2xl font-bold">+</span>
-          )}
-        </div>
-      </div>
-      {/* Answer */}
-      {isOpen && (
-        <p className="leading-[34px] text-xl font-medium text-[#717680]">
-          {answer}
-        </p>
-      )}
-      <div className="h-[1px] bg-[#dfdfdf]"></div>
+        <span className="font-semibold text-lg">{question}</span>
+        <span className="text-xl">{isOpen ? "−" : "+"}</span>
+      </button>
+      {isOpen && <p className="mt-2 text-gray-600">{answer}</p>}
     </div>
   );
 };
