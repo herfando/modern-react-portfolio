@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tambahan animasi scroll kiri */
+/* Add animation left scroll */
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
