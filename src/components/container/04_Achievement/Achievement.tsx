@@ -1,6 +1,6 @@
 import React from "react";
 
-// Pisahkan data achievement ke dalam array
+// Centralized data for achievements. This practice makes the component reusable, scalable, and easy to maintain.
 const ACHIEVEMENTS = [
     { number: "50+", text: "Projects Delivered" },
     { number: "5+", text: "Years of Experience" },
@@ -10,7 +10,7 @@ const ACHIEVEMENTS = [
 
 const Achievement: React.FC = () => {
     return (
-        <section id="Projects" className="py-10 flex flex-col justify-center items-center w-full dark:bg-black h-[688px] md:h-[598px]">
+        <section className="py-10 flex flex-col justify-center items-center w-full dark:bg-black h-[688px] md:h-[598px]">
             
             {/* Text */}
             <article>
@@ -23,8 +23,10 @@ const Achievement: React.FC = () => {
             </article>
 
             <article className="dark:text-white grid grid-cols-2 place-items-center md:flex md:gap-x-10  gap-x-5 gap-y-5">
-                {/* Gunakan map untuk merender setiap item dari array */}
+                {/* Mapping over the ACHIEVEMENTS array to dynamically render each item.
+                This is a fundamental React practice for creating dynamic lists from data. */}
                 {ACHIEVEMENTS.map((item, index) => (
+                    // Using `key={index}` is standard practice to help React efficiently update the list.
                     <dl key={index} className="h-[172.5px] w-[172.5px] md:h-[275px] md:w-[275px] border-4 border-[#DEDCDC] rounded-full grid justify-center text-center content-center">
                         <dt className="text-[#FF623E] md:text-5xl text-3xl font-bold">{item.number}</dt>
                         <dd className="md:text-lg text-l font-semibold">{item.text}</dd>

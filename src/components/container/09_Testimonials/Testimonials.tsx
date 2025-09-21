@@ -1,10 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 
 const Testimonials: React.FC = () => {
+  // `useState` manages the currently active slide index, triggering re-renders when changed.
   const [currentSlide, setCurrentSlide] = useState(0);
+  // `useRef` provides a way to directly access and manipulate the DOM elements without causing re-renders.
   const sliderRef = useRef<HTMLDivElement>(null);
+  // This ref stores a mutable array of DOM elements for each testimonial card.
   const testimonialCardsRef = useRef<Array<HTMLDivElement | null>>([]);
 
+  // Centralized data for testimonials, making the content easy to update and manage.
   const testimonials = [
     {
       name: "John Lee",
@@ -29,6 +33,8 @@ const Testimonials: React.FC = () => {
     }
   ];
 
+  // `useEffect` handles side effects, such as updating the slider's position and adding/removing a window resize event listener.
+  // The dependency array `[currentSlide]` ensures this effect runs whenever the active slide changes.
   useEffect(() => {
     const updateSliderPosition = () => {
       if (!sliderRef.current || testimonialCardsRef.current.length === 0) {
@@ -55,24 +61,29 @@ const Testimonials: React.FC = () => {
       const maxScroll = sliderRef.current.scrollWidth - containerWidth;
       scrollOffset = Math.max(0, Math.min(scrollOffset, maxScroll));
 
+      // This line directly manipulates the DOM to slide the carousel, which is more performant than using state for a visual animation.
       sliderRef.current.style.transform = `translateX(-${scrollOffset}px)`;
     };
 
     updateSliderPosition();
     window.addEventListener("resize", updateSliderPosition);
 
+    // The cleanup function removes the event listener when the component unmounts to prevent memory leaks.
     return () => {
       window.removeEventListener("resize", updateSliderPosition);
     };
   }, [currentSlide]);
 
+  // A simple function to update the `currentSlide` state.
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
 
+  // Helper function to determine if a slide is active for conditional styling.
   const isActive = (index: number) => index === currentSlide;
 
   return (
+    // The `id` attribute makes this section a navigation target.
     <section id="Testimonials" className="gap-4 bg-white dark:bg-black justify-center flex flex-col md:h-[723px] h-[700px] text-black dark:text-white w-full">
       <div className="gap-4 flex flex-col text-center">
         <h2 className="leading-14 text-[40px] font-bold max-[393px]:text-[30px] max-[393px]:font-medium">
@@ -84,19 +95,22 @@ const Testimonials: React.FC = () => {
       </div>
 
       <div className=" relative overflow-hidden py-[25px] max-[393px]:h-[483px] max-[393px]:pt-0">
+        {/* These gradient overlays create a visual fade effect at the edges of the slider. */}
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none max-[393px]:hidden"></div>
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none max-[393px]:hidden"></div>
 
         <div ref={sliderRef} id="testimonialSlider" 
-            className="flex flex-nowrap gap-4 transition-transform duration-500 ease-in-out px-4">
+             className="flex flex-nowrap gap-4 transition-transform duration-500 ease-in-out px-4">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
+              // The `ref` callback here assigns the DOM element to the `testimonialCardsRef` array.
               ref={(el) => {
                 if (el) {
                   testimonialCardsRef.current[index] = el;
                 }
               }}
+              // Tailwind CSS classes are used for dynamic styling based on the active state.
               className={`
                 testimonial-card flex-shrink-0 
                 w-[594px] h-[292px] max-[393px]:w-[361px] max-[393px]:h-[284px] 
@@ -113,6 +127,7 @@ const Testimonials: React.FC = () => {
                 
                 <div className="flex flex-col gap-6 items-center text-center mt-4">
                   <div className="flex gap-1">
+                    {/* Dynamically rendering a list of stars for the rating. */}
                     {[...Array(5)].map((_, i) => (
                       <img key={i} src="./09_Testimonials_star.png" alt="Star" />
                     ))}
@@ -132,6 +147,7 @@ const Testimonials: React.FC = () => {
           ))}
         </div>
 
+        {/* The navigation dots at the bottom. The color changes based on the `isActive` state. */}
         <ul className=" mt-25 flex justify-center gap-2">
           {testimonials.map((_, index) => (
             <li key={index}>

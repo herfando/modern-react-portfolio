@@ -1,5 +1,7 @@
 import React from "react";
 
+// Centralized data array for all services. This approach is highly scalable,
+// making it easy to add, remove, or modify services without changing the component's structure.
 const SERVICES = [
   {
     title: "Web Development",
@@ -59,6 +61,7 @@ const SERVICES = [
 
 const Services: React.FC = () => {
   return (
+    // The `id` attribute is added here to serve as an anchor for in-page navigation.
     <section
       id="Services"
       className="flex flex-col gap-16 py-20 px-[140px] max-[393px]:py-10 max-[393px]:px-3.5 dark:bg-black text-black dark:text-white w-full"
@@ -72,14 +75,22 @@ const Services: React.FC = () => {
         </p>
       </div>
 
+      {/* This grid layout is responsive, stacking on smaller screens (grid-cols-1)
+      and expanding to three columns on medium-sized screens and up (md:grid-cols-3). */}
       <div className="grid md:grid-cols-3 grid-cols-1 gap-y-10 gap-x-5">
+        {/* Mapping over the SERVICES array to dynamically render each service card.
+        This is a standard React pattern for generating a list of components from data. */}
         {SERVICES.map((service, index) => (
+          // The `key` prop is crucial for React to uniquely identify each element in the list,
+          // which helps optimize rendering performance.
           <div
             key={index}
             className="pb-5 px-5 border border-[#dcdcdc] rounded-2xl cursor-pointer"
           >
             <div className="flex flex-col gap-5 mt-[-30px]">
               <div>
+                {/* The image's `alt` attribute is vital for accessibility,
+                providing a text description for screen readers and search engines. */}
                 <img src={service.imageSrc} alt={service.imageAlt} />
               </div>
               <div className="flex flex-col gap-1">

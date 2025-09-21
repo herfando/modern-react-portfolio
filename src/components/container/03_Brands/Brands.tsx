@@ -1,6 +1,6 @@
 import React from "react";
 
-// Pisahkan data merek ke dalam array
+// Centralizing brand data into an array. This makes the component highly reusable and easy to update.
 const BRAND_LOGOS = [
     { src: "./03_Brands_adobe.png", alt: "Adobe" },
     { src: "./03_Brands_upwork.png", alt: "Upwork" },
@@ -15,6 +15,7 @@ const BRAND_LOGOS = [
 
 const Brands: React.FC = () => {
     return (
+    // The `id` attribute allows this section to be a target for smooth-scrolling navigation.
     <section
         id="Service"
         className="w-full relative z-20 flex flex-col items-center py-10 overflow-hidden bg-white dark:bg-black"
@@ -23,9 +24,11 @@ const Brands: React.FC = () => {
         Trusted by Global Innovators & Leading Brands
     </h3>
     <ul
+        // The `animate-scroll-left` class is used here to create a continuous horizontal scrolling animation.
         className="flex animate-scroll-left space-x-10 grayscale w-full"
     >
-        {/* map untuk merender setiap item dari array */}
+        {/* Mapping over the BRAND_LOGOS array to dynamically render each logo.
+        Using `key={index}` is standard practice when mapping through an array in React. */}
         {BRAND_LOGOS.map((brand, index) => (
         <li key={index} className="flex-shrink-0">
             <img 

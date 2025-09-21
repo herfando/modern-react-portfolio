@@ -2,19 +2,23 @@ import React from "react";
 
 const OurProcess: React.FC = () => {
     return (
+        // The `section` element is semantically correct for a standalone content block like this process flow.
         <section className="flex flex-col gap-16 py-20 px-[140px] bg-white dark:bg-black w-full overflow-x-hidden
                             max-md:py-10 max-md:px-3.5">
             <div className="flex flex-col gap-[11px] text-center">
-                {/* Text */}
+                {/* A clear and engaging headline for the section. */}
                 <h2 className="text-[40px] font-bold text-black dark:text-white leading-14
                                 max-md:text-4xl max-md:w-[361px]">Our Process</h2>
                 <p className="leading-8 text-[18px] font-medium text-[#717680]">
                     Clear steps. Smart execution. Results you can count on.
                 </p>
             </div>
+            {/* The responsive grid layout is a key feature here. It switches from a three-column desktop view
+            to a two-column mobile view, creating a clean, responsive timeline. */}
             <div className="relative grid grid-cols-[1fr_48px_1fr] gap-4 items-center
                             max-md:grid-cols-[48px_1fr] max-md:gap-10">
-                {/* Vertical Line */}
+                {/* The vertical line is positioned absolutely to create a timeline effect,
+                a great example of using CSS for visual design. */}
                 <div className="absolute top-[8.5%] left-1/2 -z-0 w-[1px] h-10/12 bg-[#DEDCDC] dark:bg-[#181D27]
                                 max-md:left-[24px]"></div>
 
@@ -26,6 +30,8 @@ const OurProcess: React.FC = () => {
                         <p className="leading-[30px] text-base font-medium text-[#717680]">Understand Your Needs & Goals</p>
                     </div>
                 </div>
+                {/* The numbered circles are a visual anchor for the process steps. Their order is controlled
+                by the `max-md:order` utility class, which is a great use of Tailwind CSS for responsive design. */}
                 <div className="z-20 h-12 w-12 bg-[#ff623e] rounded-full leading-12 text-white text-center flex items-center justify-center max-md:order-1">1</div>
                 <div className="max-md:hidden"></div>
                 

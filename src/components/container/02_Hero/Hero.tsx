@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "../../ui/Button/Button";
 
+// Centralized content object for the Hero section.
+// This is a great practice for maintainability and makes the component more reusable.
 const HERO_CONTENT = {
   title: "Your Tech Partner for",
   subtitle: "We deliver tailored IT solutions to help you scale with speed and confidence.",
@@ -10,6 +12,8 @@ const HERO_CONTENT = {
 };
 
 const Hero: React.FC = () => {
+  // A dedicated function for smooth scrolling to any section ID.
+  // This cleanly separates the scrolling logic from the component's JSX.
   const scrollToSection = (sectionId: string) => {
     const sectionElement = document.getElementById(sectionId);
     if (sectionElement) {
@@ -18,6 +22,7 @@ const Hero: React.FC = () => {
   };
 
   return (
+    // The `id` attribute is crucial for navigation and accessibility, allowing links to target this section.
     <section 
       id="Hero" 
       className="h-[731px] bg-white dark:bg-black text-black dark:text-white grid grid-cols-1 md:grid-cols-2 md:h-[663px] pt-24 md:pt-0 px-4"
@@ -37,11 +42,14 @@ const Hero: React.FC = () => {
         <Button 
           className="w-full md:w-[197px] cursor-pointer" 
           label={HERO_CONTENT.buttonLabel} 
+          // The button's onClick handler calls the `scrollToSection` function, demonstrating effective event handling.
           onClick={() => scrollToSection(HERO_CONTENT.buttonTarget)} 
         />
       </article>
 
       <div className="md:col-start-2 flex justify-center items-center">
+        {/* Conditional rendering using Tailwind's 'dark:hidden' and 'dark:block' classes.
+        This efficiently swaps images based on the user's color theme without extra state logic. */}
         <img
           className="dark:hidden block w-full h-auto object-contain max-h-[663px] max-w-[747px]"
           src="./02_Hero_smartphone_light.png"

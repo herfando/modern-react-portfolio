@@ -5,7 +5,7 @@ import useToggle from "../../hooks/useToggle";
 import NavLink from "./Navlink";
 import Button from "../../ui/Button/Button";
 
-// Menggunakan data navigasi yang terpusat untuk kemudahan pengelolaan
+// Centralized navigation data for easy management.
 const NAV_ITEMS = [
   { id: "Hero", label: "About" },
   { id: "Services", label: "Service" },
@@ -15,12 +15,15 @@ const NAV_ITEMS = [
 ];
 
 const Navbar: React.FC = () => {
+  // Use of a custom hook (useToggle) to manage mobile menu state. This improves code reusability and clarity.
   const { isOpen, toggle, close } = useToggle(false);
-  // State untuk melacak link yang sedang aktif
+  // Using useState to track the currently active link based on scroll position.
   const [activeLink, setActiveLink] = useState('Hero');
 
-  // Efek untuk memperbarui link aktif saat pengguna menggulir halaman
+  // useEffect is used to handle side effects, such as adding and removing a scroll event listener.
+  // This ensures proper resource cleanup and prevents memory leaks.
   useEffect(() => {
+    // This function checks the viewport position of each section to determine the active link.
     const handleScroll = () => {
       let currentSection = '';
       for (const item of NAV_ITEMS) {
@@ -36,11 +39,12 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // This function handles smooth scrolling when a navigation link is clicked.
   const scrollToSection = (sectionId: string) => {
     const sectionElement = document.getElementById(sectionId);
     if (sectionElement) {
       sectionElement.scrollIntoView({ behavior: "smooth" });
-      // Perbarui state link aktif saat tombol diklik
+      // The activeLink state is updated here to ensure the clicked link is immediately highlighted.
       setActiveLink(sectionId);
       close();
     }
@@ -54,21 +58,22 @@ const Navbar: React.FC = () => {
         <span className="md:text-2xl text-l font-bold">Your Logo</span>
       </a>
 
-      {/* Navigasi Desktop */}
+      {/* Desktop Navigation */}
+      {/* Conditional rendering using Tailwind CSS classes ('hidden md:flex') to show or hide elements based on screen size. */}
       <nav className="hidden md:flex justify-center gap-8 font-semibold">
         {NAV_ITEMS.map((link) => (
+          // 'NavLink' is a reusable component. Props like 'key' and 'isActive' demonstrate effective prop handling.
           <NavLink
             key={link.id}
             id={link.id}
             label={link.label}
             onClick={scrollToSection}
-            // Kirim state 'activeLink' ke NavLink
             isActive={activeLink === link.id}
           />
         ))}
       </nav>
 
-      {/* Tombol Desktop */}
+      {/* Desktop Button */}
       <div className="hidden md:flex items-center gap-4">
         <DarkModeToggle />
         <Button
@@ -79,6 +84,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile */}
+      {/* Conditional rendering for mobile-only view. */}
       <div className="flex items-center gap-2 md:hidden">
         <DarkModeToggle />
         <div className="z-50 pr-4">
@@ -86,7 +92,9 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Menu Mobile */}
+      {/* Mobile Menu */}
+      {/* Dynamic class names based on 'isOpen' state for animated sliding.
+      This is a good example of conditional rendering for UI changes. */}
       <nav
         className={`gap-5 fixed top-20 left-0 w-full h-[1000px] bg-white dark:bg-black text-black dark:text-white transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
@@ -99,7 +107,6 @@ const Navbar: React.FC = () => {
               id={link.id}
               label={link.label}
               onClick={scrollToSection}
-              // Kirim state 'activeLink' ke NavLink
               isActive={activeLink === link.id}
             />
           ))}

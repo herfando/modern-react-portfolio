@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// Centralized data for different industries. This makes the component easy to manage and scale.
 const INDUSTRIES = [
   {
     id: "fintech",
@@ -25,17 +26,22 @@ const INDUSTRIES = [
 ];
 
 const Industry: React.FC = () => {
+  // Using `useState` to manage which tab is currently active.
+  // The initial state is set to the first industry's ID.
   const [activeTab, setActiveTab] = useState(INDUSTRIES[0].id);
 
+  // This function updates the active tab state when a user clicks on an industry title.
   const handleTabClick = (tabName: string) => {
     setActiveTab(tabName);
   };
 
+  // `Array.find()` is used to get the data for the active industry, ensuring that the displayed
+  // content always matches the selected tab.
   const activeIndustry = INDUSTRIES.find(industry => industry.id === activeTab);
 
   return (
     <section className="max-[393px]:py-10 max-[393px]:px-3.5 flex flex-col gap-16 py-20 px-[140px] bg-white dark:bg-black text-black dark:text-white w-full">
-      {/* Judul & Subjudul */}
+      {/* Title & Subtitle */}
       <div className="flex flex-col gap-[11px]">
         <h2 className="leading-14 text-[40px] max-[393px]:text-[33px] font-bold">
           Built for Your Industry
@@ -45,17 +51,20 @@ const Industry: React.FC = () => {
         </p>
       </div>
 
-      {/* Konten Utama */}
+      {/* Main Content */}
       <div className="grid md:grid-cols-[150px_1fr] gap-16 grid-cols-1 max-[393px]:gap-10">
-        {/* Kolom kiri: Daftar industri */}
+        {/* Left Column: List of industries */}
         <div className="flex flex-col gap-6">
           {INDUSTRIES.map((industry) => (
             <div
               key={industry.id}
               className="industry-tab flex gap-2 cursor-pointer items-center"
+              // The `onClick` handler calls `handleTabClick` to change the active tab state.
               onClick={() => handleTabClick(industry.id)}
             >
               <div
+                // This ternary operator is a simple and effective way to conditionally apply CSS classes,
+                // highlighting the active tab with a different color.
                 className={`indicator w-[4px] h-[34px] rounded-[100px] ${
                   activeTab === industry.id ? "bg-[#ff623e]" : "bg-[#aaa]"
                 }`}
@@ -65,8 +74,10 @@ const Industry: React.FC = () => {
           ))}
         </div>
 
-        {/* Kolom kanan: Deskripsi & Gambar */}
+        {/* Right Column: Description & Image */}
         <div className="flex flex-col gap-5 grow">
+          {/* This conditional rendering (`activeIndustry && ...`) ensures content is only displayed
+          if a matching industry is found, preventing errors. */}
           {activeIndustry && (
             <div
               id={activeIndustry.id}
