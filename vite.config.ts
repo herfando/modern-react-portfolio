@@ -5,5 +5,5 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/modern-react-portfolio/", // penting untuk GitHub Pages
+  base: "/modern-react-portfolio/", // tambahkan ini
 });
