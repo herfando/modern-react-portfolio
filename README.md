@@ -1,125 +1,102 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/tXuzjvS0)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=20482417&assignment_repo_type=AssignmentRepo)
-# Challenge 7 - Slicing Figma design into code with React Vite & Tailwindcss
+<!-- Banner -->
+<p align="center">
+  <img src="https://media.giphy.com/media/L8K62iTDkzGX6/giphy.gif" width="600" alt="React Animated Banner"/>
+</p>
 
-# Description
+<h1 align="center">🚀 Modern React Portfolio</h1>
+<p align="center">
+  Built with <b>React ⚛️, Vite ⚡, and TailwindCSS 🌈</b>  
+</p>
 
-In this assignment, you'll translate a provided Figma design into a functional webpage using React Vite and Tailwind CSS.
+---
 
-You'll be provided with a basic project setup, and your task will be to implement the design by writing components that reusable and utilizing Tailwind's classes.
+## 🌐 Live Demo  
+👉 [View Portfolio Here](https://herfando.github.io/modern-react-portfolio/)
 
-The design for this assignment is located at the following Figma link:
+---
 
-[Figma Design Link](https://www.figma.com/design/SiIl1A1UdSOVLKrtMjgHD2/Company-Profile---Batch-4?node-id=8411-143671&t=wyqKMkBKZYGo958y-1)
+## 🎬 Project Preview
+<p align="center">
+  <img src="https://media.giphy.com/media/SS8CV2rQdlYNLtBCiF/giphy.gif" width="800" alt="Project Preview"/>
+</p>
 
-The goal is to assess your ability to:
+---
 
-- Interpret a design from Figma.
-- Create a reusable component
-- Structure a webpage with vite.
-- Apply styles using Tailwind CSS.
-- Create a responsive layout.
+## 📦 Tech Stack & Tools
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)
 
-# Folder Structure
+---
 
-You are provided with the following folder structure:
+## 📖 Description
+This project is a **modern personal portfolio website** developed as part of Challenge 7.  
+The goal was to slice a **Figma design** into a fully responsive React web app using **Vite** and **TailwindCSS**.  
 
-```
+✨ Key features:
+- 🎨 Pixel-perfect design implementation from Figma  
+- ⚡ Fast performance with Vite  
+- 📱 Responsive design (mobile-first)  
+- ♻️ Reusable & maintainable components  
+
+---
+
+## 📂 Folder Structure
 root/
-  ├── node_modules/
-  ├── public/
-  ├── src/
-  │ ├── components/
-  │ │ ├── container/
-  │ │ └── ui/
-  │ └── App.tsx
-  │ └── index.css
-  │ └── main.tsx
-  ├── .gitignore
-  ├── eslint.config.js
-  ├── package-lock.json
-  ├── package.json
-  └── readme.md
-  └── tsconfig.app.json
-  └── tsconfig.json
-  └── tsconfig.node.json
-  └── vite.config.ts
-```
+├── public/ # assets (images, fonts, icons)
+├── src/ # source code
+│ ├── components/
+│ │ ├── container/ # layout components
+│ │ └── ui/ # small UI components (button, input, etc.)
+│ ├── App.tsx
+│ ├── index.css
+│ └── main.tsx
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
 
-# Important file/folder to understanda
+yaml
+Salin kode
 
-- public: all asset should go here, ex: images, icons, fonts
-- src: a folder for all of the source code
-- src/components: this folder is to create components that you can reuse
-- src/components/ui: this folder is for component that only return one HTML tag, like button, input, etc.
-- src/components/container: this folder is for component that have more than 1 component (ex: search bar = input and button), also you can create page section here
-- vite.config.ts: see this file for tailwind setup on vite
+---
 
-# Assignment Objectives
+## ⚙️ Getting Started
 
-- Figma to HTML: Accurately translate the Figma design into HTML. Create the necessary HTML elements to structure the page (divs, sections, headers, etc.).
-- Tailwind CSS Styling: Use Tailwind CSS classes to style the HTML elements. Pay close attention to:
-- Layout (Flexbox, Grid).
-- Spacing (padding, margin).
-- Typography (font sizes, weights, colors).
-- Colors and Backgrounds.
-- esponsive design (using Tailwind's responsive prefixes, e.g., md:, lg:).
-- Responsive Design: Ensure your implementation is responsive across different screen sizes, as defined in the Figma design. Use Tailwind's responsive modifiers.
-- Adherence to Design: Your final webpage should closely match the visual design provided in the Figma file.
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/herfando/modern-react-portfolio.git
+   cd modern-react-portfolio
+Install dependencies
 
-# Getting Started
-
-Don't forget to run
-
-```
+bash
+Salin kode
 npm install
-```
+Run locally
 
-for this project first, then to run the app, run
-
-```
+bash
+Salin kode
 npm run dev
-```
+Build for production
 
-on terminal
+bash
+Salin kode
+npm run build
+🏆 Assignment Objectives
+🎯 Slice Figma to React Components
 
-Study the Figma Design: Open the Figma link and thoroughly examine the design. Understand the layout, spacing, colors, typography, and responsive behavior.
+🎯 Apply Tailwind CSS utilities
 
-HTML Structure: Open the public/index.html file. Begin by structuring the page with HTML elements that mirror the design.
+🎯 Ensure responsiveness across devices
 
-Tailwind CSS: Use Tailwind CSS classes directly within your HTML elements to apply styles. For example:
+🎯 Write clean & reusable code
 
-<div class="flex justify-center items-center">...</div>
+📊 Evaluation Criteria
+🎨 Design Accuracy (Figma match)
 
-<h1 class="text-3xl font-bold text-blue-600">...</h1>
+♻️ Reusable Components
 
-Test in the Browser: Run npm run dev to see it on your browser
+🎯 Efficient Tailwind usage
 
-Iterate: Continue to refine your HTML and Tailwind CSS until your webpage accurately matches the Figma design.
-
-# Important Notes
-
-You can modify the folder structure only on src and public folder, don't change anything related to project setup
-
-Tailwind CSS Documentation: Refer to the official Tailwind CSS documentation (https://tailwindcss.com/docs) for information on available classes and how to use them.
-
-Figma Inspection: Use the "Inspect" feature in Figma to get precise measurements, colors, and font styles from the design.
-
-# Evaluation System
-
-The evaluation for this assignment will be based on the following criteria:
-
-1.  **Design Accuracy:** How accurately your implementation matches the design provided in Figma across different screen sizes.
-2.  **Reusable Component:** How you can split your code into readable and not a bunch of code in one single component
-3.  **Effective CSS Usage:** The correct and efficient use of CSS selectors, as well as understanding of basic CSS properties and _media queries_ (if responsiveness is implemented).
-4.  **Code Readability and Organization:** HTML and CSS code that is well-structured, easy to read, and commented where necessary.
-
----
-
-# How to Upload your Challenge
-
-Check this module: [click this](https://orchid-clematis-3e4.notion.site/Panduan-Penggunaan-Git-Untuk-Upload-Assignment-e2d80a19b3684f5d8f1a4209dcf85445?pvs=73)
-
----
-
-🎉 Congratulations on working on this assignment! Utilize the _playground_ feature in Figma to help you understand how the design should look on various devices. Keep experimenting and don't hesitate to look for references if you encounter difficulties. You can definitely produce great work! 🚀 Keep up the spirit, cheers! 🎈
+📖 Code readability & structure
